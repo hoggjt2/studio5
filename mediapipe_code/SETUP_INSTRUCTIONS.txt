@@ -1,0 +1,1 @@
+test_landmarks.cc must be copied to the mediapip/examples/desktop/ directory
