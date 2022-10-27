@@ -1,7 +1,12 @@
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
-data = np.loadtxt("3d_coordinates.txt", None, None, delimiter=" ", encoding="utf-16")
+
+# Choose a name for the coordinates text file
+# Include file type eg. 'lungedata.txt'
+TEXTFILE = 'singlelunge.txt'
+
+data = np.loadtxt(TEXTFILE, None, None, delimiter=" ")
 ID = data[:,0]
 X = data[:,1]
 Y = data[:,2]
@@ -9,6 +14,7 @@ Z = data[:,3]
 fig = plt.figure()
 ax = fig.add_subplot(111, projection="3d")
 ax.scatter(X, Y, Z, alpha=1)
+ax.set_ylim(-1,1)
 ax.set_xlabel('$X$')
 ax.set_ylabel('$Y$')
 ax.set_zlabel('$Z$')
@@ -45,6 +51,6 @@ connectpoints(X,Y,Z,29,31)
 connectpoints(X,Y,Z,27,31)
 connectpoints(X,Y,Z,23,24)
 # uncomment below for data labelling
-# for x,y,z,i in zip(X,Y,Z,range(len(X))):
-#     ax.text(x,y,z,i)
+for x,y,z,i in zip(X,Y,Z,range(len(X))):
+    ax.text(x,y,z,i)
 plt.show()
